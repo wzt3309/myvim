@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/wzt/.vim'
-let g:netrw_dirhist_2='/home/wzt/.config/flake8'
-let g:netrw_dirhist_3='/home/wzt/git/python/flasky/templates'
-let g:netrw_dirhist_4='/usr/share/applications'

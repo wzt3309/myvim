@@ -1,114 +1,73 @@
-" vundle 环境配置
-filetype off
+set nocompatible    " be improved, required
+filetype off        " required
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-
-" vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 call vundle#begin()
+
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'vim-scripts/phd'
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'derekwyatt/vim-fswitch'
-Plugin 'kshenoy/vim-signature'
-Plugin 'vim-scripts/BOOKMARKS--Mark-and-Highlight-Full-Lines'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/indexer.tar.gz'
-Plugin 'vim-scripts/DfrankUtil'
-Plugin 'vim-scripts/vimprj'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/DrawIt'
-Plugin 'SirVer/ultisnips'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'derekwyatt/vim-protodef'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'gcmt/wildfire.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'lilydjwg/fcitx.vim'
-Plugin 'ashfinal/vim-colors-violet'
-" 插件列表结束
-call vundle#end()
-filetype plugin indent on
+" Plugins for markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+" Plugins for beautiful
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-" 配色方案
-set background=dark
-colorscheme violet
-" colorscheme solarized
-" colorscheme molokai
-"colorscheme phd
+" All of your Plugins must be added before the following line
+call vundle#end()           " required
+filetype plugin indent on   " required
 
-" 禁止光标闪烁
-set gcr=a:block-blinkon0
-" 禁止显示滚动条
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-" 禁止显示菜单和工具条
-set guioptions-=m
-set guioptions-=T
-" 总是显示状态栏
+" Status line
 set laststatus=2
-" 显示光标当前位置
-set ruler
-" 开启行号显示
+set t_Co=256
+
 set number
-" 高亮显示当前行/列
-set cursorline
-set cursorcolumn
-" 高亮显示搜索结果
-set hlsearch
-" 开启语法高亮功能
-syntax enable
-" 允许用指定语法高亮配色方案替换默认方案
+" 语法高亮
 syntax on
-
-" 将外部命令 wmctrl 控制窗口最大化的命令行参数封装成一个 vim 的函数
-fun! ToggleFullscreen()
-	call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
-endf
-" 全屏开/关快捷键
-map <silent> <F11> :call ToggleFullscreen()<CR>
-" 启动 vim 时自动全屏
-autocmd VimEnter * call ToggleFullscreen()
-
-" 设置 gvim 显示字体
-set guifont=YaHei\ Consolas\ Hybrid\ 11.5
-" 禁止折行
-set nowrap
-" 设置状态栏主题风格
-let g:Powerline_colorscheme='solarized256'
-
-" 自适应不同语言的智能缩进
-filetype indent on
-" 将制表符扩展为空格
+set hlsearch
+" 缩进
 set expandtab
-" 设置编辑时制表符占用空格数
 set tabstop=4
-" 设置格式化时制表符占用空格数
-set shiftwidth=4
-" 让 vim 把连续数量的空格视为一个制表符
 set softtabstop=4
+set shiftwidth=4
 
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
-" 色块宽度
-let g:indent_guides_guide_size=1
-" 快捷键 i 开/关缩进可视化
-:nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+" 检测文件的类型
+filetype on
+filetype plugin on
+filetype indent on
 
-" 基于缩进或语法进行代码折叠
-"set foldmethod=indent
-set foldmethod=syntax
-" 启动 vim 时关闭折叠代码
-" za，打开或关闭当前折叠；zM，关闭所有折叠；zR，打开所有折叠
-set nofoldenable
+" C风格缩进
+set cindent
+set completeopt=longest,menu
+
+" 去掉输入错误提示声音
+set noeb
+" 自动保存
+set autowrite
+
+" 设置默认进行大小写不敏感查找
+set ignorecase
+" 如果有一个大写字母，则切换到大小写敏感查找
+set smartcase
+" 搜索高亮
+" set nohl
+highlight Search ctermbg=yellow ctermfg=black
+highlight IncSearch ctermbg=black ctermfg=yellow
+highlight MatchParen cterm=underline ctermbg=NONE ctermfg=NONE
+
+" markdown configuration
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_json_frontmatter = 1
+let g:vim_markdown_autowrite = 1
+let vim_markdown_preview_github = 1
+" let vim_markdown_preview_pandoc = 1
+let vim_markdown_preview_toggle = 1
+let vim_markdown_preview_browser = 'Google Chrome'
+let vim_markdown_preview_temp_file = 1
+
+" status line and tab styles
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
