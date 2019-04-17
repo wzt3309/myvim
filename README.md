@@ -277,7 +277,7 @@ The relationship between buffer, tab and window
     -   `zn` disable folding
     -   `zN` enable folding
 -   Create/Delete
-    -   `zf` e.g. `3zf` create 3 line to folding
+   	– `zf` e.g. `3zf+` or `3zf↓` create 3 line to folding, `zf56G` create folding to line 56, `3zf+` or `3zf↑` create folding up, `zf%` create folding to (`()` , `{}`, `[]`, or `<>`)
     -   `zd` delete fold at cursor line
     -   `zD` delete all folds at the cursor line
     -   `:set foldmethod=indent` Ford by indent, very useful for python
