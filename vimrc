@@ -16,6 +16,8 @@ Plugin 'vim-airline/vim-airline-themes'
 " Plugins for snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+" Plugins for latex
+Plugin 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
 
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
@@ -26,9 +28,6 @@ set laststatus=2
 set t_Co=256
 
 set number
-" 语法高亮
-syntax on
-set hlsearch
 " 缩进
 set expandtab
 set tabstop=4
@@ -39,6 +38,9 @@ set shiftwidth=4
 filetype on
 filetype plugin on
 filetype indent on
+
+" 语法高亮
+syntax on
 
 " C风格缩进
 set cindent
@@ -55,6 +57,7 @@ set ignorecase
 set smartcase
 " 搜索高亮
 " set nohl
+set hlsearch
 highlight Search ctermbg=yellow ctermfg=black
 highlight IncSearch ctermbg=black ctermfg=yellow
 highlight MatchParen cterm=underline ctermbg=NONE ctermfg=NONE
@@ -76,7 +79,11 @@ let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " latex configuration
-let g:tex_indent_items=0
+" using \ll to preview pdf
+let g:tex_indent_items = 0
+let g:text_flavor = "xeletax"
+let g:vimtex_view_method = "skim"
+let g:vimtex_quickfix_mode=0
 
 " ultisnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
