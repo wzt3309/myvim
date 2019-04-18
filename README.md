@@ -319,3 +319,7 @@ The relationship between buffer, tab and window
 
 `c-v` select the first line, then `shit-I` and type '//' or '\#' (in
 python), ``` esc esc ```
+
+-   Type Special character
+
+`:digraphs` to lookup all special character, and use `c-k <?><?>` to type e.g. `c-k a*` get α
