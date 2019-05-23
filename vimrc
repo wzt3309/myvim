@@ -18,7 +18,10 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 " Plugins for latex
 Plugin 'lervag/vimtex', {'for': ['tex', 'plaintex', 'bst']}
-
+" Plugins for auto complete
+" Plugin 'Valloric/YouCompleteMe'
+" Plugins for golang
+Plugin 'fatih/vim-go'
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
 filetype plugin indent on   " required
@@ -88,7 +91,7 @@ let g:vimtex_quickfix_mode=0
 " ultisnips configuration
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-i>"
+"let g:UltiSnipsListSnippets="<c-i>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
